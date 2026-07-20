@@ -1,0 +1,6 @@
+<svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GPC — الورقة الذهبية">
+  <!-- علامة الحرف C مع طيّة ورقة (الزاوية السفلية اليمنى). العدّاد الداخلي شفّاف (evenodd) ليعمل على أي خلفية. اللون يُتحكّم به عبر currentColor. -->
+  <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"
+    d="M29 16 H71 V56 L55 74 H25 Z
+       M40 30 H60 L64 34 V44 H53 V60 H40 Z"/>
+</svg>
