@@ -1,0 +1,84 @@
+/* ============================================================
+   الورقة الذهبية GPC — نظام تصميم مشترك (Brand Design System)
+   يُستخدم في: team.html، cards/*.html
+   الألوان مستخرجة من الموقع الرسمي المبني.
+   ============================================================ */
+
+:root {
+  /* الهوية اللونية */
+  --gpc-purple:        #643DFF;   /* أساسي  */
+  --gpc-purple-2:      #7B5CFF;   /* أفتح   */
+  --gpc-purple-dark:   #38226B;   /* داكن   */
+  --gpc-purple-deep:   #1A0D3D;   /* أعمق   */
+  --gpc-gold:          #FFC42E;   /* مميّز  */
+  --gpc-gold-2:        #FFE195;   /* ذهبي فاتح */
+  --gpc-bg:            #F8F7FF;   /* خلفية فاتحة */
+  --gpc-ink:           #1A0D3D;
+  --gpc-muted:         #6b6784;
+  --gpc-white:         #ffffff;
+
+  --gpc-radius:        22px;
+  --gpc-radius-sm:     14px;
+  --gpc-shadow:        0 24px 60px -18px rgba(56,34,107,.45);
+  --gpc-shadow-sm:     0 8px 24px -10px rgba(56,34,107,.35);
+  --gpc-font:          'Noto Kufi Arabic', 'Cairo', system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--gpc-font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+img, svg { max-width: 100%; display: block; }
+
+/* ---------- شعار الحرف C ---------- */
+.gpc-mark { display: inline-block; line-height: 0; }
+.gpc-mark svg { width: 100%; height: 100%; display: block; }
+
+/* قفل الشعار (علامة + نص) */
+.gpc-lockup { display: inline-flex; align-items: center; gap: .6rem; }
+.gpc-lockup .gpc-mark { width: 46px; height: 46px; }
+.gpc-lockup .gpc-word { line-height: 1.05; }
+.gpc-lockup .gpc-word b { display: block; font-weight: 800; font-size: 1.05rem; letter-spacing: .2px; }
+.gpc-lockup .gpc-word span { display: block; font-weight: 600; font-size: .72rem; letter-spacing: 3px; opacity: .85; }
+
+/* ---------- أزرار الإجراءات ---------- */
+.gpc-actions { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+.gpc-btn {
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: 14px 16px; border-radius: var(--gpc-radius-sm);
+  font-family: var(--gpc-font); font-weight: 700; font-size: .98rem;
+  border: 1.5px solid transparent; cursor: pointer;
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+  user-select: none;
+}
+.gpc-btn:hover  { transform: translateY(-2px); }
+.gpc-btn:active { transform: translateY(0); }
+.gpc-btn svg { width: 20px; height: 20px; flex: none; }
+
+.gpc-btn--gold    { background: var(--gpc-gold); color: var(--gpc-purple-deep); box-shadow: var(--gpc-shadow-sm); }
+.gpc-btn--gold:hover { background: var(--gpc-gold-2); }
+.gpc-btn--solid   { background: var(--gpc-purple); color: #fff; box-shadow: var(--gpc-shadow-sm); }
+.gpc-btn--solid:hover { background: var(--gpc-purple-2); }
+.gpc-btn--ghost   { background: rgba(255,255,255,.06); color: #fff; border-color: rgba(255,255,255,.22); }
+.gpc-btn--ghost:hover { background: rgba(255,255,255,.14); }
+.gpc-btn--wide    { grid-column: 1 / -1; }
+
+/* ---------- شارة/وسم ---------- */
+.gpc-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 999px; font-size: .8rem; font-weight: 600;
+  background: rgba(255,196,46,.15); color: var(--gpc-gold);
+  border: 1px solid rgba(255,196,46,.3);
+}
+
+.gpc-visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
