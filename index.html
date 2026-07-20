@@ -17,6 +17,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <script type="module" crossorigin src="./assets/index-DATgigZ8.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-DzwE51Dp.css">
+    <!-- تحصين شخصية Goldy ضد أي تشوّه/تمطيط مهما تغيّر الـ CSS أو عرض الشاشة -->
+    <style>
+      img[alt^="Goldy"]{
+        aspect-ratio:1/1;      /* يبقى الصندوق مربّعاً حتى لو طُبِّق بُعد واحد فقط */
+        object-fit:contain;    /* الصورة تُحتوى بنسبتها الأصلية — يستحيل التمطيط */
+        object-position:center;
+        max-width:100%;
+        height:auto;           /* الارتفاع يتبع العرض عبر aspect-ratio */
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
