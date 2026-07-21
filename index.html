@@ -1,34 +1,342 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>الورقة الذهبية للطباعة | Golden Paper Co.</title>
-    <meta name="description" content="الورقة الذهبية GPC — طباعة احترافية وتغليف متكامل ودعاية وإعلان في تبوك، المملكة العربية السعودية. نُحوِّل أفكارك إلى واقع مطبوع." />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <meta name="theme-color" content="#643DFF" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="الورقة الذهبية للطباعة | Golden Paper Co." />
-    <meta property="og:description" content="طباعة احترافية وتغليف متكامل ودعاية وإعلان في تبوك — نُحوِّل أفكارك إلى واقع مطبوع." />
-    <meta property="og:image" content="./opengraph.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="./assets/index-DATgigZ8.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DzwE51Dp.css">
-    <!-- تحصين شخصية Goldy ضد أي تشوّه/تمطيط مهما تغيّر الـ CSS أو عرض الشاشة -->
-    <style>
-      img[alt^="Goldy"]{
-        aspect-ratio:1/1;      /* يبقى الصندوق مربّعاً حتى لو طُبِّق بُعد واحد فقط */
-        object-fit:contain;    /* الصورة تُحتوى بنسبتها الأصلية — يستحيل التمطيط */
-        object-position:center;
-        max-width:100%;
-        height:auto;           /* الارتفاع يتبع العرض عبر aspect-ratio */
-      }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الورقة الذهبية GPC — البراند وأعماله</title>
+  <meta name="description" content="الورقة الذهبية GPC — طباعة احترافية وتغليف متكامل ودعاية وإعلان في تبوك. تعرّف على قصتنا، أعمالنا، وفريقنا." />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <meta property="og:title" content="الورقة الذهبية GPC — البراند وأعماله" />
+  <meta property="og:description" content="طباعة احترافية وتغليف متكامل ودعاية وإعلان في تبوك. نُحوِّل أفكارك إلى واقع مطبوع." />
+  <meta property="og:image" content="./opengraph.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://suad8.github.io/golden-papersd23d/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://suad8.github.io/golden-papersd23d/" />
+  <meta name="theme-color" content="#643DFF" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./brand/brand.css">
+  <style>
+    body{background:var(--gpc-bg);color:var(--gpc-ink);min-height:100vh;overflow-x:hidden}
+    section{scroll-margin-top:20px}
+
+    /* ===== الهيرو ===== */
+    .hero{position:relative;overflow:hidden;color:#fff;padding:44px 20px 100px;
+      background:radial-gradient(900px 480px at 88% -10%,rgba(255,196,46,.30),transparent 60%),
+        radial-gradient(700px 400px at 5% 20%,rgba(123,92,255,.55),transparent 55%),
+        linear-gradient(160deg,#643DFF 0%,#4a2ecc 55%,#38226B 100%)}
+    .hero::after{content:"";position:absolute;inset:0;opacity:.06;pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Cpath fill='%23ffffff' fill-rule='evenodd' d='M29 16 H71 V56 L55 74 H25 Z M40 30 H60 L64 34 V44 H53 V60 H40 Z'/%3E%3C/svg%3E");background-size:104px 104px}
+    .hero-inner{position:relative;z-index:1;max-width:1000px;margin:0 auto;display:grid;
+      grid-template-columns:1.1fr .9fr;align-items:center;gap:24px}
+    .hero .gpc-lockup{margin-bottom:22px}
+    .hero .gpc-lockup .gpc-mark{width:54px;height:54px;color:var(--gpc-gold)}
+    .hero .gpc-lockup .gpc-word b{color:#fff;font-size:1.15rem}
+    .hero .gpc-lockup .gpc-word span{color:var(--gpc-gold)}
+    .hero h1{font-size:2.5rem;line-height:1.25;margin:0 0 14px;font-weight:900}
+    .hero h1 .hl{color:var(--gpc-gold-2)}
+    .hero p.lead{opacity:.85;font-size:1.05rem;margin:0 0 12px;max-width:34ch}
+    .hero .tagline{display:inline-block;font-weight:700;color:var(--gpc-gold);letter-spacing:1px;margin-bottom:22px}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+    .goldy-wrap{position:relative;display:flex;justify-content:center}
+    .goldy-wrap::before{content:"";position:absolute;inset:auto 0 6% 0;height:26px;margin:auto;width:56%;
+      background:rgba(0,0,0,.28);filter:blur(18px);border-radius:50%}
+    .goldy{width:min(320px,80%);aspect-ratio:1/1;height:auto;object-fit:contain;filter:drop-shadow(0 22px 30px rgba(26,13,61,.5));animation:float 5s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    @media(prefers-reduced-motion:reduce){.goldy{animation:none}}
+
+    /* ===== الإحصائيات ===== */
+    .stats{max-width:960px;margin:-56px auto 0;position:relative;z-index:3;padding:0 20px;
+      display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .stat{background:#fff;border-radius:var(--gpc-radius-sm);padding:20px 12px;text-align:center;
+      box-shadow:var(--gpc-shadow-sm);border:1px solid #efeafe}
+    .stat b{display:block;font-size:1.7rem;font-weight:900;color:var(--gpc-purple)}
+    .stat span{font-size:.82rem;color:var(--gpc-muted);font-weight:600}
+
+    .container{max-width:1000px;margin:0 auto;padding:0 20px}
+    .sec-head{text-align:center;margin:64px 0 8px}
+    .sec-head .kicker{display:inline-block;color:var(--gpc-gold);background:rgba(255,196,46,.14);
+      border:1px solid rgba(255,196,46,.35);padding:5px 14px;border-radius:999px;font-size:.78rem;font-weight:700;margin-bottom:12px}
+    .sec-head h2{font-size:1.7rem;font-weight:900;color:var(--gpc-purple-dark);margin:0 0 6px}
+    .sec-head p{color:var(--gpc-muted);margin:0}
+
+    /* ===== القيم ===== */
+    .values{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:28px}
+    .value{background:#fff;border-radius:var(--gpc-radius);padding:26px 22px;border:1px solid #efeafe;box-shadow:var(--gpc-shadow-sm)}
+    .value .vi{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(145deg,#7B5CFF,#643DFF);color:#fff;margin-bottom:14px}
+    .value .vi svg{width:26px;height:26px}
+    .value h3{margin:0 0 6px;font-size:1.15rem;color:var(--gpc-purple-dark)}
+    .value p{margin:0;color:var(--gpc-muted);font-size:.92rem;line-height:1.7}
+
+    /* ===== الخدمات ===== */
+    .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+    .chips span{background:#fff;border:1px solid #e7e0fb;color:var(--gpc-purple-dark);
+      padding:11px 20px;border-radius:999px;font-size:.95rem;font-weight:600;box-shadow:0 3px 10px -7px rgba(56,34,107,.5)}
+
+    /* ===== العملاء ===== */
+    .logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px;margin-top:28px}
+    .logo-tile{background:#fff;border:1px solid #efeafe;border-radius:16px;padding:18px 14px;display:flex;
+      flex-direction:column;align-items:center;gap:10px;box-shadow:0 4px 14px -10px rgba(56,34,107,.5);transition:transform .15s,box-shadow .2s}
+    .logo-tile:hover{transform:translateY(-3px);box-shadow:var(--gpc-shadow-sm)}
+    .logo-tile img{width:100%;height:88px;object-fit:contain}
+    .logo-tile span{font-size:.82rem;font-weight:600;color:var(--gpc-muted)}
+
+    /* ===== الفريق ===== */
+    .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:28px}
+    .member{background:#fff;border-radius:var(--gpc-radius);padding:26px 22px 22px;text-align:center;
+      box-shadow:var(--gpc-shadow-sm);border:1px solid #efeafe;transition:transform .15s,box-shadow .2s}
+    .member:hover{transform:translateY(-4px);box-shadow:var(--gpc-shadow)}
+    .m-av{width:84px;height:84px;margin:0 auto 14px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      font-weight:800;font-size:2.1rem;color:var(--gpc-purple-deep);background:linear-gradient(145deg,#FFE195,#FFC42E);box-shadow:0 0 0 6px rgba(255,196,46,.16)}
+    .m-name{font-weight:800;font-size:1.25rem;margin:0 0 2px}
+    .m-name-en{font-size:.7rem;letter-spacing:1.5px;color:var(--gpc-muted);margin-bottom:10px}
+    .m-title{margin-bottom:18px}
+    .m-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .m-actions .gpc-btn{padding:11px 10px;font-size:.86rem}
+
+    /* ===== التواصل ===== */
+    .contact{background:#fff;border-radius:var(--gpc-radius);border:1px solid #efeafe;box-shadow:var(--gpc-shadow-sm);
+      padding:30px 26px;margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px}
+    .c-item{display:flex;gap:12px;align-items:flex-start}
+    .c-item .ic{width:42px;height:42px;flex:none;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(100,61,255,.1);color:var(--gpc-purple)}
+    .c-item .ic svg{width:22px;height:22px}
+    .c-item b{display:block;font-size:.78rem;color:var(--gpc-muted);font-weight:600;margin-bottom:3px}
+    .c-item a,.c-item span{color:var(--gpc-ink);font-weight:700;font-size:.95rem;word-break:break-word}
+
+    /* ===== الفوتر ===== */
+    .foot{text-align:center;padding:40px 20px;color:#fff;margin-top:64px;
+      background:linear-gradient(160deg,#38226B,#1A0D3D)}
+    .foot .gpc-lockup{margin-bottom:16px}
+    .foot .gpc-lockup .gpc-mark{width:40px;height:40px;color:var(--gpc-gold)}
+    .foot .gpc-lockup .gpc-word b{color:#fff}.foot .gpc-lockup .gpc-word span{color:var(--gpc-gold)}
+    .foot .social{display:flex;gap:12px;justify-content:center;margin:8px 0 14px}
+    .foot .social a{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      background:rgba(255,255,255,.1);color:#fff;transition:background .2s,transform .12s}
+    .foot .social a:hover{background:var(--gpc-gold);color:var(--gpc-purple-deep);transform:translateY(-2px)}
+    .foot .social a svg{width:19px;height:19px}
+    .foot .fnote{opacity:.6;font-size:.8rem;margin-top:10px}
+    .foot a.plain{color:var(--gpc-gold-2)}
+
+    @media(max-width:760px){
+      .hero-inner{grid-template-columns:1fr;text-align:center}
+      .hero .gpc-lockup{justify-content:center}
+      .hero-cta{justify-content:center}
+      .goldy-wrap{order:-1;margin-bottom:10px}
+      .hero p.lead{margin-inline:auto}
+      .stats{grid-template-columns:repeat(2,1fr)}
+      .hero h1{font-size:2rem}
+    }
+    @media(max-width:420px){.m-actions{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+  <!-- ===== الهيرو ===== -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="gpc-lockup">
+          <span class="gpc-mark"><svg viewBox="0 0 96 96" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M29 16 H71 V56 L55 74 H25 Z M40 30 H60 L64 34 V44 H53 V60 H40 Z"/></svg></span>
+          <span class="gpc-word"><b>الورقة الذهبية</b><span>GPC</span></span>
+        </span>
+        <h1>نُحوِّل أفكارك<br><span class="hl">إلى واقع مطبوع</span></h1>
+        <p class="lead">طباعة احترافية وتغليف متكامل ودعاية وإعلان في تبوك — بجودة عالية وتسليم فوري.</p>
+        <span class="tagline">دوماً الورقة الرابحة ✦</span>
+        <div class="hero-cta">
+          <a class="gpc-btn gpc-btn--gold" href="#contact">تواصل معنا</a>
+          <a class="gpc-btn gpc-btn--ghost" href="#clients">شاهد أعمالنا</a>
+        </div>
+      </div>
+      <div class="goldy-wrap">
+        <picture>
+          <source srcset="images/opt/goldy.webp" type="image/webp">
+          <img class="goldy" src="images/goldy.png" alt="Goldy — شخصية الورقة الذهبية" width="320" height="320" fetchpriority="high">
+        </picture>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== الإحصائيات ===== -->
+  <section class="stats" aria-label="إنجازاتنا بالأرقام">
+    <div class="stat"><b>+٢٠٠</b><span>عميل سعيد</span></div>
+    <div class="stat"><b>+٥</b><span>سنوات خبرة</span></div>
+    <div class="stat"><b>+٥٠٠</b><span>مشروع منجز</span></div>
+    <div class="stat"><b>٪٩٨</b><span>رضا العملاء</span></div>
+  </section>
+
+  <main class="container">
+
+    <!-- ===== من نحن ===== -->
+    <section id="about">
+      <div class="sec-head">
+        <span class="kicker">من نحن</span>
+        <h2>شريكك في كل مطبوعة</h2>
+        <p>في الورقة الذهبية GPC نمزج الإبداع بالجودة لنمنح علامتك حضوراً يليق بها.</p>
+      </div>
+      <div class="values">
+        <div class="value">
+          <span class="vi"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 9.2 8.6 2 9.2l5.5 4.7L5.8 21 12 17.3 18.2 21l-1.7-7.1L22 9.2l-7.2-.6L12 2Z"/></svg></span>
+          <h3>الإبداع</h3>
+          <p>تصاميم مبتكرة تعبّر عن هوية علامتك وتترك أثراً لا يُنسى.</p>
+        </div>
+        <div class="value">
+          <span class="vi"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2Z"/></svg></span>
+          <h3>الجودة</h3>
+          <p>خامات ممتازة وطباعة دقيقة تضمن نتيجة احترافية في كل مرة.</p>
+        </div>
+        <div class="value">
+          <span class="vi"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 6 5 9.5 5 13a7 7 0 0 0 14 0c0-3.5-2-7-7-11Zm0 17a4 4 0 0 1-4-4c0-2 1-4.2 4-7 3 2.8 4 5 4 7a4 4 0 0 1-4 4Z"/></svg></span>
+          <h3>الاستدامة</h3>
+          <p>حلول طباعة مسؤولة وخيارات صديقة للبيئة كلما أمكن.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== الخدمات ===== -->
+    <section id="services">
+      <div class="sec-head">
+        <span class="kicker">ما نقدمه</span>
+        <h2>خدماتنا</h2>
+        <p>كل ما تحتاجه علامتك من مطبوعات وتغليف تحت سقف واحد.</p>
+      </div>
+      <div class="chips">
+        <span>بكجات كاملة</span><span>بوكسات</span><span>أكواب ورقية وبلاستيكية</span>
+        <span>علب كرتونية</span><span>طباعة UV</span><span>مجلات</span>
+        <span>بروشورات</span><span>ملصقات وستيكرات</span><span>هدايا مؤسسية</span>
+      </div>
+    </section>
+
+    <!-- ===== العملاء / الأعمال ===== -->
+    <section id="clients">
+      <div class="sec-head">
+        <span class="kicker">أعمالنا</span>
+        <h2>عملاؤنا وشركاء النجاح</h2>
+        <p>نفخر بثقة هذه العلامات التجارية المميزة.</p>
+      </div>
+      <div class="logos">
+        <div class="logo-tile"><img src="images/clients/partners/01-bocelli.jpg" alt="بوتشيلي" loading="lazy"><span>بوتشيلي</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/02-the-palm.jpg" alt="ذا بالم" loading="lazy"><span>ذا بالم</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/03-spotlight.png" alt="سبوت لايت" loading="lazy"><span>سبوت لايت</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/04-kupo.png" alt="كوبو" loading="lazy"><span>كوبو</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/05-meld.png" alt="ملد" loading="lazy"><span>ملد</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/06-arta-cake.jpg" alt="آرتا كيك" loading="lazy"><span>آرتا كيك</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/07-shai-suwailem.jpg" alt="شاي سويلم" loading="lazy"><span>شاي سويلم</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/08-azf-marrakesh.jpg" alt="عزف مراكش" loading="lazy"><span>عزف مراكش</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/09-miss-donuts.jpg" alt="مس دونتس" loading="lazy"><span>مس دونتس</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/10-azhan.jpg" alt="أذهان" loading="lazy"><span>أذهان</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/11-erm.jpg" alt="إرم" loading="lazy"><span>إرم</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/12-makeen.jpg" alt="مكين" loading="lazy"><span>مكين</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/13-kunafa-boutique.jpg" alt="كنافة بوتيك" loading="lazy"><span>كنافة بوتيك</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/14-totem.jpg" alt="توتم" loading="lazy"><span>توتم</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/15-yunit.jpg" alt="يونت" loading="lazy"><span>يونت</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/16-aromo.jpg" alt="أرومو" loading="lazy"><span>أرومو</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/17-jadila.jpg" alt="جديلا" loading="lazy"><span>جديلا</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/18-shaghaf.jpg" alt="شغف" loading="lazy"><span>شغف</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/21-farah-sweet.jpg" alt="فرح سويت" loading="lazy"><span>فرح سويت</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/22-khairat-dimashq.jpg" alt="خيرات دمشق" loading="lazy"><span>خيرات دمشق</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/23-kaf-360.jpg" alt="كاف 360" loading="lazy"><span>كاف 360</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/24-marw.jpg" alt="مرو" loading="lazy"><span>مرو</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/25-sandwich.jpg" alt="سندويتش" loading="lazy"><span>سندويتش</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/26-shai-almumtaz.jpg" alt="شاي الممتاز" loading="lazy"><span>شاي الممتاز</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/28-furn-zaytoun.jpg" alt="فرن زيتون" loading="lazy"><span>فرن زيتون</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/30-azf.jpg" alt="عزف" loading="lazy"><span>عزف</span></div>
+        <div class="logo-tile"><img src="images/clients/partners/32-barq.jpg" alt="برق" loading="lazy"><span>برق</span></div>
+      </div>
+    </section>
+
+    <!-- ===== الفريق ===== -->
+    <section id="team">
+      <div class="sec-head">
+        <span class="kicker">فريقنا</span>
+        <h2>الأشخاص خلف الورقة الذهبية</h2>
+        <p>اضغط على «البطاقة» لحفظ جهة الاتصال مباشرةً.</p>
+      </div>
+      <div class="team">
+        <article class="member">
+          <div class="m-av">أ</div>
+          <h3 class="m-name">أبو عبدالكريم</h3>
+          <div class="m-name-en">ABU ABDUL ALKARIM</div>
+          <div class="m-title"><span class="gpc-chip">المدير العام</span></div>
+          <div class="m-actions">
+            <a class="gpc-btn gpc-btn--solid" href="cards/abu-abdulkarim.html">البطاقة</a>
+            <a class="gpc-btn gpc-btn--gold" href="https://wa.me/966530063686" target="_blank" rel="noopener">واتساب</a>
+          </div>
+        </article>
+        <article class="member">
+          <div class="m-av">خ</div>
+          <h3 class="m-name">خالد محمد</h3>
+          <div class="m-name-en">KHALID MOHAMMED</div>
+          <div class="m-title"><span class="gpc-chip">المدير التنفيذي</span></div>
+          <div class="m-actions">
+            <a class="gpc-btn gpc-btn--solid" href="cards/khalid.html">البطاقة</a>
+            <a class="gpc-btn gpc-btn--gold" href="https://wa.me/966500727188" target="_blank" rel="noopener">واتساب</a>
+          </div>
+        </article>
+        <article class="member">
+          <div class="m-av">ع</div>
+          <h3 class="m-name">عبدالكريم محمد</h3>
+          <div class="m-name-en">ABDUL ALKARIM</div>
+          <div class="m-title"><span class="gpc-chip">أخصائي تسويق</span></div>
+          <div class="m-actions">
+            <a class="gpc-btn gpc-btn--solid" href="cards/abdulkarim.html">البطاقة</a>
+            <a class="gpc-btn gpc-btn--gold" href="https://wa.me/966554554338" target="_blank" rel="noopener">واتساب</a>
+          </div>
+        </article>
+        <article class="member">
+          <div class="m-av">م</div>
+          <h3 class="m-name">مصطفى محمد</h3>
+          <div class="m-name-en">MUSTAFA MOHAMMED</div>
+          <div class="m-title"><span class="gpc-chip">مصمم جرافيك</span></div>
+          <div class="m-actions">
+            <a class="gpc-btn gpc-btn--solid" href="cards/mustafa.html">البطاقة</a>
+            <a class="gpc-btn gpc-btn--gold" href="https://wa.me/966500765277" target="_blank" rel="noopener">واتساب</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== التواصل ===== -->
+    <section id="contact">
+      <div class="sec-head">
+        <span class="kicker">تواصل معنا</span>
+        <h2>جاهزون لخدمتك</h2>
+        <p>أخبرنا عن مشروعك وسنعود إليك بأسرع وقت بأفضل عرض.</p>
+      </div>
+      <div class="contact">
+        <div class="c-item">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg></span>
+          <div><b>العنوان</b><span>تبوك، حي الراجحي، خلف مجمع العصر</span></div>
+        </div>
+        <div class="c-item">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v.01l8 5 8-5V6H4Zm16 2.24-7.47 4.67a1 1 0 0 1-1.06 0L4 8.24V18h16V8.24Z"/></svg></span>
+          <div><b>البريد الإلكتروني</b><a href="mailto:g.paper2023@gmail.com">g.paper2023@gmail.com</a></div>
+        </div>
+        <div class="c-item">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.93 6h-2.95a15.7 15.7 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.93 8ZM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96ZM4.26 14a7.96 7.96 0 0 1 0-4h3.38a16.6 16.6 0 0 0 0 4H4.26Zm.81 2h2.95c.35 1.28.82 2.48 1.38 3.56A8.03 8.03 0 0 1 5.07 16Zm2.95-8H5.07a8.03 8.03 0 0 1 4.33-3.56A15.7 15.7 0 0 0 8.02 8ZM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96ZM14.34 14H9.66a14.7 14.7 0 0 1 0-4h4.68a14.7 14.7 0 0 1 0 4Zm.28 5.56c.56-1.08 1.03-2.28 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56ZM16.36 14a16.6 16.6 0 0 0 0-4h3.38a7.96 7.96 0 0 1 0 4h-3.38Z"/></svg></span>
+          <div><b>الموقع الإلكتروني</b><a href="https://www.waraqadhahabiya.com" target="_blank" rel="noopener">waraqadhahabiya.com</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== الفوتر ===== -->
+  <footer class="foot">
+    <span class="gpc-lockup">
+      <span class="gpc-mark"><svg viewBox="0 0 96 96" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M29 16 H71 V56 L55 74 H25 Z M40 30 H60 L64 34 V44 H53 V60 H40 Z"/></svg></span>
+      <span class="gpc-word"><b>الورقة الذهبية</b><span>GPC</span></span>
+    </span>
+    <div class="social">
+      <a href="https://instagram.com/GP1.SA" target="_blank" rel="noopener" aria-label="إنستغرام"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 3.24A6.6 6.6 0 1 0 12 18.6 6.6 6.6 0 0 0 12 5.4Zm0 10.89A4.29 4.29 0 1 1 12 7.71a4.29 4.29 0 0 1 0 8.58Zm6.85-11.15a1.54 1.54 0 1 1-3.08 0 1.54 1.54 0 0 1 3.08 0Z"/></svg></a>
+      <a href="https://tiktok.com/@GP1.SA" target="_blank" rel="noopener" aria-label="تيك توك"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.04-2.82h-3.1v12.34a2.53 2.53 0 0 1-2.53 2.4 2.53 2.53 0 1 1 .7-4.96V9.6a5.63 5.63 0 1 0 4.93 5.58V9.01a7.34 7.34 0 0 0 4.3 1.38V7.3a4.28 4.28 0 0 1-3.26-1.48Z"/></svg></a>
+      <a href="https://snapchat.com/add/GP1.SA" target="_blank" rel="noopener" aria-label="سناب شات"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.01 2c1.86.02 3.65.98 4.4 2.94.28.72.24 1.62.22 2.42-.01.28-.03.6-.04.94.13.07.32.11.53.11.3-.01.66-.11.98-.28.13-.07.28-.1.42-.1.3 0 .58.15.7.44.16.4-.08.75-.6.98l-.4.18c-.44.2-.99.44-1.14.79-.08.19-.03.42.05.6.02.03 1.06 2.34 3.3 2.71.24.04.42.25.4.5-.01.09-.03.17-.07.24-.28.66-1.5.92-2.2 1.03-.08.01-.13.1-.15.24-.02.1-.04.2-.08.32-.05.16-.2.26-.4.26h-.04c-.14 0-.32-.03-.55-.07-.35-.07-.77-.14-1.28-.14-.3 0-.62.03-.94.08-.62.11-1.14.5-1.7.9-.72.53-1.53 1.12-2.79 1.12h-.14c-1.26 0-2.06-.59-2.78-1.11-.57-.42-1.09-.8-1.71-.91a5.9 5.9 0 0 0-.94-.08c-.53 0-.96.09-1.28.15-.22.04-.4.07-.53.07-.27.01-.4-.15-.46-.28-.04-.11-.06-.22-.08-.31-.03-.14-.07-.23-.15-.24-.7-.11-1.92-.37-2.2-1.04a.53.53 0 0 1-.06-.23c-.02-.25.15-.46.4-.5 2.23-.37 3.27-2.68 3.3-2.72.08-.17.13-.4.05-.6-.15-.34-.7-.58-1.14-.78-.14-.06-.28-.12-.4-.18-.68-.3-.77-.66-.66-.98.11-.32.5-.5.87-.36.28.13.6.2.85.2.22 0 .38-.04.48-.09v-.03c-.02-.34-.04-.65-.05-.93-.02-.8-.06-1.7.22-2.42C8.34 2.98 10.13 2.02 12 2h.01Z"/></svg></a>
+    </div>
+    <div>@GP1.SA · <a class="plain" href="cards/">البطاقات الرقمية</a> · <a class="plain" href="https://www.waraqadhahabiya.com" target="_blank" rel="noopener">المتجر الإلكتروني</a></div>
+    <div class="fnote">© <span id="yr">2025</span> الورقة الذهبية GPC — جميع الحقوق محفوظة · تبوك، السعودية</div>
+  </footer>
+
+  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
 </html>
