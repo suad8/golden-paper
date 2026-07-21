@@ -83,6 +83,40 @@
     .logo-tile:hover{transform:translateY(-3px);box-shadow:var(--gpc-shadow-sm)}
     .logo-tile img{width:100%;height:88px;object-fit:contain}
     .logo-tile span{font-size:.82rem;font-weight:600;color:var(--gpc-muted)}
+    .logo-tile{cursor:pointer;position:relative}
+    .logo-tile::after{content:"شاهد الأعمال";position:absolute;inset:auto 0 0 0;
+      background:linear-gradient(180deg,transparent,rgba(100,61,255,.94));color:#fff;
+      font-size:.72rem;font-weight:700;padding:22px 8px 8px;border-radius:0 0 16px 16px;
+      opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s;pointer-events:none}
+    .logo-tile:hover::after,.logo-tile:focus-visible::after{opacity:1;transform:translateY(0)}
+    .logo-tile:focus-visible{outline:2px solid #FFC42E;outline-offset:2px}
+
+    /* ===== نافذة معرض الأعمال (lightbox) ===== */
+    .gx{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;
+      background:rgba(26,13,61,.82);backdrop-filter:blur(6px);padding:20px}
+    .gx.open{display:flex}
+    .gx-box{background:#fff;border-radius:22px;max-width:920px;width:100%;max-height:92vh;
+      display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.4)}
+    .gx-head{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid #efeafe}
+    .gx-head img{width:40px;height:40px;object-fit:contain;border-radius:8px;background:#faf9ff;flex:0 0 auto}
+    .gx-head b{font-size:1.05rem;color:var(--gpc-ink)}
+    .gx-count{margin-inline-start:auto;font-size:.8rem;color:var(--gpc-muted);white-space:nowrap;direction:ltr;unicode-bidi:isolate}
+    .gx-close{background:#f3f0ff;border:0;width:38px;height:38px;border-radius:50%;cursor:pointer;
+      font-size:1.1rem;line-height:1;color:#643DFF;display:grid;place-items:center;flex:0 0 auto}
+    .gx-close:hover{background:#e7e0ff}
+    .gx-stage{position:relative;flex:1;display:grid;place-items:center;background:#faf9ff;min-height:260px;padding:16px}
+    .gx-stage img{max-width:100%;max-height:58vh;object-fit:contain;border-radius:12px}
+    .gx-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;
+      border:0;background:rgba(255,255,255,.94);box-shadow:0 4px 14px rgba(0,0,0,.18);cursor:pointer;
+      font-size:1.5rem;color:#643DFF;display:grid;place-items:center}
+    .gx-nav:hover{background:#fff}
+    .gx-prev{inset-inline-start:14px}.gx-next{inset-inline-end:14px}
+    .gx-nav[hidden]{display:none}
+    .gx-note{padding:12px 18px;font-size:.82rem;color:var(--gpc-muted);text-align:center;background:#fbfaff}
+    .gx-thumbs{display:flex;gap:8px;padding:12px 16px;overflow-x:auto;border-top:1px solid #efeafe}
+    .gx-thumbs img{width:56px;height:56px;object-fit:cover;border-radius:8px;cursor:pointer;
+      border:2px solid transparent;opacity:.6;flex:0 0 auto;transition:opacity .15s}
+    .gx-thumbs img.on{border-color:#643DFF;opacity:1}
 
     /* ===== الفريق ===== */
     .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:28px}
@@ -337,6 +371,130 @@
     <div class="fnote">© <span id="yr">2025</span> الورقة الذهبية GPC — جميع الحقوق محفوظة · تبوك، السعودية</div>
   </footer>
 
+  <!-- ===== نافذة معرض أعمال العملاء ===== -->
+  <div class="gx" id="gx" role="dialog" aria-modal="true" aria-labelledby="gxName" hidden>
+    <div class="gx-box">
+      <div class="gx-head">
+        <img id="gxLogo" alt="">
+        <b id="gxName"></b>
+        <span class="gx-count" id="gxCount"></span>
+        <button class="gx-close" id="gxClose" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="gx-stage">
+        <button class="gx-nav gx-prev" id="gxPrev" aria-label="السابق">›</button>
+        <img id="gxImg" alt="">
+        <button class="gx-nav gx-next" id="gxNext" aria-label="التالي">‹</button>
+      </div>
+      <div class="gx-note" id="gxNote" hidden></div>
+      <div class="gx-thumbs" id="gxThumbs"></div>
+    </div>
+  </div>
+
   <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+
+  <!-- ===== منطق معرض الأعمال: نقر الشعار → معرض صور العميل (تعبئة تلقائية من مجلده) ===== -->
+  <script>
+  (function(){
+    var WORK_BASE='images/clients/work/', EXT=['jpg','jpeg','png','webp'], MAX=24;
+    var gx=document.getElementById('gx'),
+        elLogo=document.getElementById('gxLogo'), elName=document.getElementById('gxName'),
+        elCount=document.getElementById('gxCount'), elImg=document.getElementById('gxImg'),
+        elPrev=document.getElementById('gxPrev'), elNext=document.getElementById('gxNext'),
+        elNote=document.getElementById('gxNote'), elThumbs=document.getElementById('gxThumbs');
+    var state={imgs:[], idx:0}, cache={}, opener=null;
+
+    function slugOf(src){ return src.split('/').pop().replace(/\.[^.]+$/,'').replace(/^\d+-/,''); }
+
+    function probe(url){
+      return new Promise(function(res){
+        var im=new Image();
+        im.onload=function(){ res(im.naturalWidth>0?url:null); };
+        im.onerror=function(){ res(null); };
+        im.src=url;
+      });
+    }
+
+    // يبحث عن 01,02,... بأي امتداد ويتوقف عند أول رقم مفقود
+    function collect(slug){
+      if(cache[slug]) return Promise.resolve(cache[slug]);
+      var found=[];
+      function step(i){
+        if(i>MAX){ cache[slug]=found; return found; }
+        var n=('0'+i).slice(-2);
+        return (function tryExt(k){
+          if(k>=EXT.length) return Promise.resolve(null);
+          return probe(WORK_BASE+slug+'/'+n+'.'+EXT[k]).then(function(u){ return u||tryExt(k+1); });
+        })(0).then(function(u){
+          if(u){ found.push(u); return step(i+1); }
+          cache[slug]=found; return found;
+        });
+      }
+      return Promise.resolve(step(1));
+    }
+
+    function render(){
+      var multi=state.imgs.length>1;
+      elImg.src=state.imgs[state.idx];
+      elPrev.hidden=!multi; elNext.hidden=!multi;
+      elCount.textContent = state.placeholder ? 'الشعار' : (multi ? (state.idx+1)+' / '+state.imgs.length : '');
+      // الصور المصغّرة
+      elThumbs.innerHTML='';
+      if(multi){
+        state.imgs.forEach(function(u,i){
+          var t=new Image(); t.src=u; t.alt=''; if(i===state.idx) t.className='on';
+          t.addEventListener('click',function(){ state.idx=i; render(); });
+          elThumbs.appendChild(t);
+        });
+      }
+    }
+
+    function open(tile){
+      var img=tile.querySelector('img'), logo=img.getAttribute('src');
+      var name=(tile.querySelector('span')||{}).textContent||'';
+      opener=tile;
+      elLogo.src=logo; elName.textContent=name;
+      elCount.textContent='…'; elNote.hidden=true; elThumbs.innerHTML=''; elImg.removeAttribute('src');
+      gx.hidden=false; gx.classList.add('open'); document.body.style.overflow='hidden';
+      document.getElementById('gxClose').focus();
+      collect(slugOf(logo)).then(function(works){
+        if(works.length){ state={imgs:works, idx:0, placeholder:false}; elNote.hidden=true; }
+        else { state={imgs:[logo], idx:0, placeholder:true};
+               elNote.hidden=false; elNote.textContent='📸 صور أعمال '+name+' قريباً — تُضاف تلقائياً عند رفعها لمجلد العميل.'; }
+        render();
+      });
+    }
+
+    function close(){
+      gx.classList.remove('open'); gx.hidden=true; document.body.style.overflow='';
+      if(opener) opener.focus();
+    }
+    function move(d){
+      if(state.imgs.length<2) return;
+      state.idx=(state.idx+d+state.imgs.length)%state.imgs.length; render();
+    }
+
+    // ربط الشعارات
+    [].forEach.call(document.querySelectorAll('#clients .logo-tile'),function(tile){
+      tile.setAttribute('role','button'); tile.setAttribute('tabindex','0');
+      var nm=(tile.querySelector('span')||{}).textContent||'';
+      tile.setAttribute('aria-label','معرض أعمال '+nm);
+      tile.addEventListener('click',function(){ open(tile); });
+      tile.addEventListener('keydown',function(e){
+        if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(tile); }
+      });
+    });
+
+    document.getElementById('gxClose').addEventListener('click',close);
+    elPrev.addEventListener('click',function(){ move(-1); }); // السابق (يمين في RTL)
+    elNext.addEventListener('click',function(){ move(1); });
+    gx.addEventListener('click',function(e){ if(e.target===gx) close(); });
+    document.addEventListener('keydown',function(e){
+      if(gx.hidden) return;
+      if(e.key==='Escape') close();
+      else if(e.key==='ArrowRight') move(-1);
+      else if(e.key==='ArrowLeft') move(1);
+    });
+  })();
+  </script>
 </body>
 </html>
